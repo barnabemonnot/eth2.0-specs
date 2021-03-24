@@ -127,7 +127,7 @@ def compute_sync_committee_participant_reward(spec, state, participant_index, co
         spec, state, participant_index, committee, committee_bits,
     )
     proposer_reward = spec.Gwei(inclusion_reward // spec.PROPOSER_REWARD_QUOTIENT)
-    return spec.Gwei((inclusion_reward - proposer_reward) * multiplicities[participant_index])
+    return spec.Gwei(inclusion_reward * multiplicities[participant_index])
 
 
 def compute_sync_committee_proposer_reward(spec, state, committee, committee_bits):

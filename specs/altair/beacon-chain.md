@@ -84,13 +84,13 @@ Altair is the first beacon chain hard fork. Its main features are:
 
 | Name | Value |
 | - | - |
-| `TIMELY_HEAD_WEIGHT` | `12` |
-| `TIMELY_SOURCE_WEIGHT` | `12` |
-| `TIMELY_TARGET_WEIGHT` | `24` |
-| `SYNC_REWARD_WEIGHT` | `8` |
-| `WEIGHT_DENOMINATOR` | `64` |
+| `TIMELY_HEAD_WEIGHT` | `3` |
+| `TIMELY_SOURCE_WEIGHT` | `6` |
+| `TIMELY_TARGET_WEIGHT` | `3` |
+| `SYNC_REWARD_WEIGHT` | `2` |
+| `WEIGHT_DENOMINATOR` | `14` |
 
-*Note*: The sum of the weight fractions (7/8) plus the proposer inclusion fraction (1/8) equals 1.
+*Note*: The sum of the weight fractions equals 1.
 
 ### Misc
 
@@ -552,7 +552,7 @@ def process_sync_committee(state: BeaconState, aggregate: SyncAggregate) -> None
         inclusion_reward = Gwei(max_slot_rewards * effective_balance // committee_effective_balance)
         proposer_reward = Gwei(inclusion_reward // PROPOSER_REWARD_QUOTIENT)
         increase_balance(state, get_beacon_proposer_index(state), proposer_reward)
-        increase_balance(state, included_index, inclusion_reward - proposer_reward)
+        increase_balance(state, included_index, inclusion_reward)
 ```
 
 ### Epoch processing
